@@ -1,0 +1,6 @@
+interface:
+  display_name: "Review API"
+  short_description: "Review an API against Speakeasy guidance"
+
+policy:
+  allow_implicit_invocation: false

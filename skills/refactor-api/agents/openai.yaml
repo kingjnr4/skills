@@ -1,0 +1,6 @@
+interface:
+  display_name: "Refactor API"
+  short_description: "Improve API design while managing compatibility"
+
+policy:
+  allow_implicit_invocation: false

@@ -1,0 +1,183 @@
+{
+  "repository": "https://github.com/speakeasy-api/developer-docs",
+  "commit": "7330fc12ca86f540a39c621791703287ca0e190b",
+  "snapshot_date": "2026-10-04",
+  "pages": [
+    {
+      "source_url": "https://www.speakeasy.com/api-design/api-compliance",
+      "source_file": "upstream/api-design/api-compliance.mdx",
+      "markdown_file": "api-design/03-productizing-apis/api-compliance.md",
+      "source_sha256": "3c90e0274e3f6c918dff5737dfcf45f5430648096a43648d0d0a642e1a037186"
+    },
+    {
+      "source_url": "https://www.speakeasy.com/api-design/caching",
+      "source_file": "upstream/api-design/caching.mdx",
+      "markdown_file": "api-design/02-advanced-considerations/caching.md",
+      "source_sha256": "12d2f0171697aafd2674fcca4249576341c5880e4c8d86167a7d567fc73bcc3d"
+    },
+    {
+      "source_url": "https://www.speakeasy.com/api-design/collections",
+      "source_file": "upstream/api-design/collections.md",
+      "markdown_file": "api-design/03-productizing-apis/collections.md",
+      "source_sha256": "4d777061b69379f426317627c6dc408836e04864f33d5404e30c19e350ecc68b"
+    },
+    {
+      "source_url": "https://www.speakeasy.com/api-design/consistency",
+      "source_file": "upstream/api-design/consistency.mdx",
+      "markdown_file": "api-design/03-productizing-apis/consistency.md",
+      "source_sha256": "825e20dddc4a2323db352f872212b8389d768e0f0ca783d770be83382e3b6d16"
+    },
+    {
+      "source_url": "https://www.speakeasy.com/api-design/data-formats",
+      "source_file": "upstream/api-design/data-formats.md",
+      "markdown_file": "api-design/01-api-design-basics/data-formats.md",
+      "source_sha256": "42f34e84e76974b5b4110bce763c3403ede8212a779d15c95dc7aeb77e83e515"
+    },
+    {
+      "source_url": "https://www.speakeasy.com/api-design/developer-experience",
+      "source_file": "upstream/api-design/developer-experience.mdx",
+      "markdown_file": "api-design/03-productizing-apis/developer-experience.md",
+      "source_sha256": "747c7f3a5ce7e977d04f258f00d98335ce5c55ad8c35dfe0b3954b60d3015e01"
+    },
+    {
+      "source_url": "https://www.speakeasy.com/api-design/documentation",
+      "source_file": "upstream/api-design/documentation.mdx",
+      "markdown_file": "api-design/03-productizing-apis/documentation.md",
+      "source_sha256": "d52c8b26ee3e546b0356f1409cc736a6f4bd2568692c8b5ff64c67350a421d1d"
+    },
+    {
+      "source_url": "https://www.speakeasy.com/api-design/errors",
+      "source_file": "upstream/api-design/errors.mdx",
+      "markdown_file": "api-design/02-advanced-considerations/errors.md",
+      "source_sha256": "cdf04ecf699f17eaabbe02e7e7eda17e917a2e72e0d138e4507de44d42c3b4d0"
+    },
+    {
+      "source_url": "https://www.speakeasy.com/api-design/expose-api-publicly",
+      "source_file": "upstream/api-design/expose-api-publicly.mdx",
+      "markdown_file": "api-design/03-productizing-apis/expose-api-publicly.md",
+      "source_sha256": "a56bed10f31651b771d778dbdf3cdbe3f310917048da61fa24ed305fac31b455"
+    },
+    {
+      "source_url": "https://www.speakeasy.com/api-design/file-uploads",
+      "source_file": "upstream/api-design/file-uploads.mdx",
+      "markdown_file": "api-design/02-advanced-considerations/file-uploads.md",
+      "source_sha256": "782a474a62a8d4a4b8484871adeeadd512fca9a2c0ba6d22a49aa031c0218c15"
+    },
+    {
+      "source_url": "https://www.speakeasy.com/api-design/filtering-responses",
+      "source_file": "upstream/api-design/filtering-responses.mdx",
+      "markdown_file": "api-design/02-advanced-considerations/filtering-responses.md",
+      "source_sha256": "f0add87b18bbc39305265e7ecdb4c0c29804c7edd5afdd21de3508341da4bfd8"
+    },
+    {
+      "source_url": "https://www.speakeasy.com/api-design/http-methods",
+      "source_file": "upstream/api-design/http-methods.md",
+      "markdown_file": "api-design/01-api-design-basics/http-methods.md",
+      "source_sha256": "892dfbab57209dedf712631d4fa39bcadfc8616cdfb0b9668e266b5eb807b45f"
+    },
+    {
+      "source_url": "https://www.speakeasy.com/api-design",
+      "source_file": "upstream/api-design/index.mdx",
+      "markdown_file": "api-design/index.md",
+      "source_sha256": "415376d68d91b1a891728a1a3affc0f83ee8cea359ec2910da835cb83382b33e"
+    },
+    {
+      "source_url": "https://www.speakeasy.com/api-design/monetization",
+      "source_file": "upstream/api-design/monetization.mdx",
+      "markdown_file": "api-design/03-productizing-apis/monetization.md",
+      "source_sha256": "f64daaf7d61c80ab145adb67c3e1400fd05793d44820bbbef6ce6a64238e8315"
+    },
+    {
+      "source_url": "https://www.speakeasy.com/api-design/pagination",
+      "source_file": "upstream/api-design/pagination.mdx",
+      "markdown_file": "api-design/02-advanced-considerations/pagination.md",
+      "source_sha256": "48e1b4fa7480b11b9d4bc683a95d89c1747c6ac50aefe406f0971cfee7c41eef"
+    },
+    {
+      "source_url": "https://www.speakeasy.com/api-design/parameters",
+      "source_file": "upstream/api-design/parameters.md",
+      "markdown_file": "api-design/01-api-design-basics/parameters.md",
+      "source_sha256": "15ab3aedcbe5591cc6cb1db0ff79bd3dba3f4abe968ae1c9b59d8c56e4b43213"
+    },
+    {
+      "source_url": "https://www.speakeasy.com/api-design/picking-architectures",
+      "source_file": "upstream/api-design/picking-architectures.mdx",
+      "markdown_file": "api-design/01-api-design-basics/picking-architectures.md",
+      "source_sha256": "c9dc9821fe8b63ee1061dd545318555501c9aaf45e42add1ec3c10074a7299bc"
+    },
+    {
+      "source_url": "https://www.speakeasy.com/api-design/rate-limiting",
+      "source_file": "upstream/api-design/rate-limiting.mdx",
+      "markdown_file": "api-design/02-advanced-considerations/rate-limiting.md",
+      "source_sha256": "485030acb625c10447ceed8e29a7203b2cd2853bcc7d99e2cfbc58be2620f212"
+    },
+    {
+      "source_url": "https://www.speakeasy.com/api-design/request-body",
+      "source_file": "upstream/api-design/request-body.mdx",
+      "markdown_file": "api-design/01-api-design-basics/request-body.md",
+      "source_sha256": "15621546a8ef54042bc02001a192670aad0721cc73a209a71ed5d911b982c588"
+    },
+    {
+      "source_url": "https://www.speakeasy.com/api-design/responses",
+      "source_file": "upstream/api-design/responses.mdx",
+      "markdown_file": "api-design/01-api-design-basics/responses.md",
+      "source_sha256": "cc44a74fc159a270bbd8b52045b56472a228ee0634457125d41f9b7b0b15ef3b"
+    },
+    {
+      "source_url": "https://www.speakeasy.com/api-design/security",
+      "source_file": "upstream/api-design/security.md",
+      "markdown_file": "api-design/03-productizing-apis/security.md",
+      "source_sha256": "2ce4b577539ed31674d298b9aa836da371abc17c1960ccddd38545694316de3d"
+    },
+    {
+      "source_url": "https://www.speakeasy.com/api-design/status-codes",
+      "source_file": "upstream/api-design/status-codes.md",
+      "markdown_file": "api-design/01-api-design-basics/status-codes.md",
+      "source_sha256": "a341fa3337f9c18313bab39ded9a63d4d8a9e3ba82f3d6c1ff7f5fbc678a8570"
+    },
+    {
+      "source_url": "https://www.speakeasy.com/api-design/testing",
+      "source_file": "upstream/api-design/testing.mdx",
+      "markdown_file": "api-design/03-productizing-apis/testing.md",
+      "source_sha256": "ab2eebbefba35e1dea0da3cd5973718299f090afbe995f230d4d91193f597f8a"
+    },
+    {
+      "source_url": "https://www.speakeasy.com/api-design/urls",
+      "source_file": "upstream/api-design/urls.md",
+      "markdown_file": "api-design/01-api-design-basics/urls.md",
+      "source_sha256": "77aaf707d83d0fc3a07c70994d3feae667520d1bf04038bce75e473f80a044ce"
+    },
+    {
+      "source_url": "https://www.speakeasy.com/api-design/versioning",
+      "source_file": "upstream/api-design/versioning.mdx",
+      "markdown_file": "api-design/02-advanced-considerations/versioning.md",
+      "source_sha256": "7a495c69abff110c0bbc1e0940106bded52eb2aa0d04021d6d886f4502af63f0"
+    }
+  ],
+  "assets": [
+    "/assets/api-design/api-architecture-decision.png",
+    "/assets/api-design/api-testing/api-pyramid.svg",
+    "/assets/api-design/api-testing/pyramid.svg",
+    "/assets/api-design/architecture-ecommerce.png",
+    "/assets/api-design/discord-rich-presence.png",
+    "/assets/api-design/errors-200-ok.jpeg",
+    "/assets/api-design/errors-documentation.png",
+    "/assets/api-design/expose-api-publicly/revolut-status-page.png",
+    "/assets/api-design/expose-api-publicly/testing-swagger.png",
+    "/assets/api-design/httpcachehit.png",
+    "/assets/api-design/httpcachemiss.png",
+    "/assets/api-design/openapi-api-authentication.png",
+    "/assets/api-design/paddle-api-reference-base-urls.png",
+    "/assets/api-design/paddle-get-started-introduction.png",
+    "/assets/api-design/paddle-get-started-links.png",
+    "/assets/api-design/rate-limiting-strategies.gif",
+    "/assets/api-design/stripe-api-create-event.png",
+    "/assets/api-design/stripe-api-versioning.png",
+    "/assets/api-design/stripe-deprecated-example.png",
+    "/assets/api-design/stripe-error-codes.png",
+    "/assets/api-design/stripe-errors-page.png",
+    "/assets/api-design/stripe-language-switching.png",
+    "/assets/api-design/twitter-levels-screenshot.png",
+    "/assets/api-design/websocket-communication.png"
+  ]
+}

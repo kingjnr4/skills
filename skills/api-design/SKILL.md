@@ -17,7 +17,7 @@ Establish who consumes the API and whether their deployments can be coordinated.
 
 Read [interpretation-notes.md](references/interpretation-notes.md), then use [topic-map.md](references/topic-map.md) to select and read the relevant guide pages before making recommendations or edits. The map routes tasks; it does not replace the articles. Load only applicable topics, expanding when a decision crosses into another topic. A broad review should cover each applicable topic and disclose gaps.
 
-The guide and its images are bundled under `references/speakeasy/`. Open an image when it contributes information needed for the decision that the surrounding prose does not convey. Do not open every illustration by default. Source provenance and snapshot limitations are in [source.md](references/source.md).
+The guide and its images are bundled under `references/speakeasy/`. Open an image when it contributes information needed for the decision that the surrounding prose does not convey. Do not open every illustration by default.
 
 Follow Speakeasy's recommendations as the design baseline. Preserve their strength: an example is not a mandatory schema, and a preference is not an HTTP requirement. Honor explicit user choices and documented project constraints; explain material departures. When a guide claim conflicts with protocol semantics, use the cited standard and identify the discrepancy. Verify unresolved technical claims against primary sources when tools permit; otherwise mark the uncertainty.
 

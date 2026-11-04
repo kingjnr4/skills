@@ -18,7 +18,7 @@ Use $review-api to assess the billing API from its routes and tests.
 Use $refactor-api to improve error consistency while preserving current clients.
 ```
 
-The core skill bundles all 25 guide pages and 24 images from Speakeasy's rest apiguide.
+The core skill includes all 25 pages and 24 images from [Speakeasy's REST API Design Guide](https://www.speakeasy.com/api-design).
 
 ## Other skills
 

@@ -46,4 +46,4 @@ Read the articles linked for the current task, not every article. These routing 
 - [Monetization](speakeasy/api-design/03-productizing-apis/monetization.md): entitlement, usage metering, and pricing flexibility. Read for billing scope, not every endpoint.
 - [API compliance](speakeasy/api-design/03-productizing-apis/api-compliance.md): technical compliance concerns and responsibilities. Do not present a design review as legal certification; verify applicable current requirements when needed.
 
-The preserved [guide index](speakeasy/api-design/index.md) supplies the original reading order. This map additionally links Collections, which appears in the archived sidebar coverage but is omitted from that index's listing.
+The [guide index](speakeasy/api-design/index.md) supplies the original reading order. This map also includes Collections, which is omitted from that index's listing.

@@ -1,6 +1,6 @@
 # Applying the guide accurately
 
-These are editorial notes, separate from the unchanged Speakeasy snapshot. Use them when interpreting the guide; they are not additional quotations from Speakeasy. They address concrete ambiguities in this snapshot rather than replacing the guide with a new style guide.
+These editorial notes clarify ambiguities in the Speakeasy guide. Use them alongside the relevant articles; they are not quotations from Speakeasy.
 
 ## HTTP methods and retries
 
@@ -26,4 +26,4 @@ The [versioning chapter](speakeasy/api-design/02-advanced-considerations/version
 
 Guide examples illustrate options rather than a universal contract template. Existing project decisions, constraints, and consumer impact matter when choosing naming conventions, envelopes, pagination, authentication, versioning, or tools. Identify deviations from Speakeasy explicitly; do not label every stylistic difference a functional defect.
 
-If another questionable claim affects the task, verify it against the relevant primary specification or implementation and explain the discrepancy. Do not silently alter the archived articles or assume every upstream snippet is production-ready code.
+If another questionable claim affects the task, verify it against the relevant primary specification or implementation and explain the discrepancy. Do not assume every example is production-ready code.

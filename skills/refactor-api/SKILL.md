@@ -1,6 +1,6 @@
 ---
 name: refactor-api
-description: Improve an existing HTTP API using Speakeasy guidance, with scoped implementation, compatibility checks, and migration planning when contracts change.
+description: Improve an existing HTTP API using shared API design guidance, with scoped implementation, compatibility checks, and migration planning when contracts change.
 disable-model-invocation: true
 ---
 
@@ -10,13 +10,13 @@ Improve the requested API surface through a concrete, verified change. An intern
 
 ## Load the shared discipline
 
-Invoke the model-invoked `api-design` skill using the host's skill mechanism (the Skill tool where available). If there is no invocation tool, read its `SKILL.md` using the path in the host's available-skills listing. Load its interpretation notes and applicable source pages. This skill depends on `api-design`; if it is unavailable, report the missing dependency. Do not invoke the user-only `review-api` skill; perform the scoped assessment here.
+Invoke the model-invoked `api-design` skill using the host's skill mechanism (the Skill tool where available). If there is no invocation tool, read its `SKILL.md` using the path in the host's available-skills listing. Its guidance is self-contained; consult linked references only when useful. This skill depends on `api-design`; if it is unavailable, report the missing dependency. Do not invoke the user-only `review-api` skill; perform the scoped assessment here.
 
 ## Ground the change
 
 Identify the target problem, current HTTP contract, desired consumer experience, and completion criteria from the request and repository. Read affected routes, schemas, shared middleware, tests, docs, and known consumers. Preserve existing work and unrelated conventions. If the request is broad, prioritize a coherent surface whose improvement has observable value rather than sweeping cosmetic renames.
 
-Load the relevant Speakeasy pages using the shared topic map. Establish whether consumers deploy together, independently within the organization, or externally. Do not assume repository searches enumerate every consumer.
+Apply the relevant core guidance from the shared skill. Establish whether consumers deploy together, independently within the organization, or externally. Do not assume repository searches enumerate every consumer.
 
 ## Choose a compatible path
 
@@ -32,4 +32,4 @@ Update the contract's source of truth, implementation, tests, and affected examp
 
 Run focused checks of old and new behavior where they coexist, including affected failures and authorization. Exercise pagination or retry behavior if changed. Compare specifications when available, but verify behavior beyond schema syntax. Record unavailable runtime or client checks as limitations rather than passing them implicitly.
 
-Deliver the implemented change, compatibility classification, relevant guide sections, checks performed, and any remaining migration or rollout work. A locally verified implementation is not evidence that external clients migrated. Do not deploy, announce deprecations, or delete old contracts as incidental cleanup.
+Deliver the implemented change, compatibility classification, consequential design choices, checks performed, and any remaining migration or rollout work. Cite external references if consulted. A locally verified implementation is not evidence that external clients migrated. Do not deploy, announce deprecations, or delete old contracts as incidental cleanup.

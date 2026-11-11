@@ -1,45 +1,103 @@
 ---
 name: api-design
-description: Design or change REST/HTTP API contracts using Speakeasy's API Design Guide. Use for endpoint and resource design, request/response schemas, HTTP methods and status codes, pagination, errors, or API compatibility decisions, including when another skill needs these principles. Excludes consuming an existing API, internal function interfaces, and backend changes that do not affect an HTTP contract.
+description: Design or change REST/HTTP API contracts. Use for resources and endpoints, request/response schemas, HTTP methods and status codes, pagination, errors, security, retries, or compatibility decisions. Excludes consuming an existing API, internal function interfaces, and backend changes that do not affect an HTTP contract.
 ---
 
 # API Design
 
-Use the bundled Speakeasy guide to make concrete API decisions. Work within the requested surface; an endpoint change is not a reason to audit or redesign the whole application.
+Design predictable HTTP contracts that consumers can use safely and that can evolve without surprises. Apply the guidance below within the requested surface; a small endpoint change is not a reason to redesign the application.
 
-## Ground the contract
+## Start with the consumer and existing contract
 
-Identify the resource or action, consumer use case, and requested deliverable. In an existing project, inspect the relevant routes, schemas, serializers, authentication/authorization, tests, API documentation, and recorded design decisions. Use the artifacts that exist; OpenAPI is helpful but not a prerequisite.
+- Establish the use case, resource or action, and requested deliverable. Inspect relevant routes, schemas, middleware, tests, docs, and known consumers before recommending changes.
+- Distinguish documented behavior, actual implementation, and intended changes. OpenAPI is useful, not a prerequisite; use the existing source of truth rather than introducing a second hand-maintained contract.
+- Preserve established terminology and conventions unless changing them solves a concrete problem. These are design defaults, not universal requirements; explain material tradeoffs and follow HTTP standards when guidance conflicts.
 
-Establish who consumes the API and whether their deployments can be coordinated. Treat unknown external consumers as a compatibility constraint. Distinguish the documented contract, observed implementation, and intended change; report discrepancies rather than assuming one proves the others.
+## Core guidance
 
-## Read the relevant guidance
+### Resources and URLs
 
-Read [interpretation-notes.md](references/interpretation-notes.md), then use [topic-map.md](references/topic-map.md) to select and read the relevant guide pages before making recommendations or edits. The map routes tasks; it does not replace the articles. Load only applicable topics, expanding when a decision crosses into another topic. A broad review should cover each applicable topic and disclose gaps.
+- Prefer plural resource nouns (`/orders`, `/orders/{id}`), stable identifiers, and shallow nesting that reflects real ownership. Use query parameters for filtering, sorting, and pagination.
+- Model actions that do not fit CRUD explicitly rather than disguising them as unrelated field updates. Do not reopen an established REST/RPC/GraphQL choice for a routine endpoint change.
 
-The guide and its images are bundled under `references/speakeasy/`. Open an image when it contributes information needed for the decision that the surrounding prose does not convey. Do not open every illustration by default.
+### HTTP semantics
 
-Follow Speakeasy's recommendations as the design baseline. Preserve their strength: an example is not a mandatory schema, and a preference is not an HTTP requirement. Honor explicit user choices and documented project constraints; explain material departures. When a guide claim conflicts with protocol semantics, use the cited standard and identify the discrepancy. Verify unresolved technical claims against primary sources when tools permit; otherwise mark the uncertainty.
+| Method | Intended use |
+| --- | --- |
+| GET | Read without requesting a state change; avoid request bodies. |
+| POST | Create a resource or perform an action; retries are not inherently safe. |
+| PUT | Replace the target's state; allow creation only if the contract supports it. |
+| PATCH | Apply a documented partial-update format; define omission and null behavior. |
+| DELETE | Remove the target; define repeated-delete and missing-resource responses. |
 
-## Shape and implement the requested surface
+- Idempotency concerns the intended server effect, not identical responses. Repeated DELETE requests may return different statuses and still be idempotent. PATCH is not inherently idempotent, but a particular operation can be.
+- Use meaningful statuses: `200` for success with a body, `201` for creation (include `Location` when appropriate), `202` for accepted but unfinished work with a way to track it, and `204` without a response body.
+- Distinguish malformed requests (`400`), missing/invalid credentials (`401`, with an appropriate challenge), forbidden access (`403`), missing resources (`404`), conflicts (`409`), and semantic validation failures (`422`) using consistent project conventions. Do not turn every `403` into a token-refresh loop.
 
-Start from how a consumer will use the API. Define the applicable parts of the contract together:
+### Request and response schemas
 
-- Resource identity, relationships, paths, and operation semantics.
-- Parameters and bodies: types, required fields, validation, defaults, omission versus null, and content types.
-- Success status, headers, response shape, and empty results.
-- Failure status and actionable, machine-readable error details.
-- Collection bounds, pagination, filtering and ordering when collections are involved.
-- Authentication, resource/property authorization, retries, caching, concurrency, and limits where relevant.
+- Define parameter locations, content types, types/formats, required fields, bounds, defaults, unknown-field handling, and omission versus null. Make input-writable and output-only fields explicit.
+- Validate untrusted input at the API boundary. Use consistent field naming, timestamp/time-zone formats, enum conventions, and representations of identifiers and precise values such as money.
+- Keep success shapes and empty-result behavior predictable. Choose an envelope only when it serves the contract; do not expose database models or internal implementation details by accident.
 
-Use project terminology consistently. Choose among the guide's alternatives using the actual use case and data source; do not prescribe cursor pagination, an envelope, a versioning mechanism, or a new tool for every API. Check retry and concurrent-write behavior for mutations when relevant. Keep sensitive information out of examples and error responses.
+### Errors
 
-For an existing contract, classify changes as behavior-preserving, additive, or potentially breaking. Include validation, defaults, nullability, ordering, status codes, headers, and SDK expectations in that assessment, not just path and field names. Do not silently replace a published contract to satisfy a style preference. Surface a conflicting requested change and offer a compatible evolution or scoped migration.
+- Return appropriate failure statuses and one consistent, machine-readable error structure with actionable human details. Do not hide failures inside `200` responses.
+- Prefer RFC 9457 Problem Details for a new error contract (`application/problem+json`); preserve a supported existing format unless migration is in scope. Its `type` identifies the problem; an extra custom `code` is optional. If a body `status` is included, match the HTTP status.
+- Include field-level validation details and a safe correlation identifier when useful. Never expose secrets, stack traces, or sensitive internals.
 
-Update the requested implementation or specification and the affected examples/docs together. Use the project's existing contract source of truth; avoid introducing a second hand-maintained specification unless requested.
+### Collections
 
-## Verify and hand back
+- Bound potentially growing collections from the start: document default/maximum page size, stable ordering with a unique tie-breaker, filters, and invalid-parameter behavior.
+- Choose page/offset pagination for straightforward navigation over suitable datasets; consider cursors for large or frequently changing datasets. Neither strategy automatically provides snapshot consistency; explain traversal behavior during writes.
+- Return an empty collection for a successful query with no matches. Provide usable continuation links or tokens and explicit end-of-results behavior; do not require totals or first/last links when costly or unavailable.
 
-Use available schema/style validation and focused behavior checks appropriate to the change. Check representative success and error cases, plus affected authorization, pagination, retries, or compatibility behavior. Prefer existing tooling; do not install a linter or generate an SDK merely to complete a small change. A clean schema lint does not prove the API behaves as documented.
+### Security and operational behavior
 
-Return the resulting contract or changes, consequential design choices with guide section references, and what was verified. Distinguish completed checks from proposed checks and note remaining assumptions. For review-only requests, return findings without modifying implementation. Repository-wide reviews and migrations belong to the explicitly requested workflow, not automatic scope expansion.
+- Require HTTPS. Keep credentials out of URLs, and redact sensitive data in logs, examples, and errors. Enforce operation-, resource-, and property-level authorization; possession of an ID is not permission.
+- Allowlist writable fields and limit request/upload sizes and expensive queries. For URL imports or uploads, account for SSRF, content validation, and resource exhaustion when applicable.
+- Define retry safety for mutations. If using idempotency keys, scope them to the caller and operation, bind them to the payload, claim atomically, handle in-flight duplicates and uncertain outcomes, and retain them through the supported retry window. A timeout does not prove the effect failed.
+- Prevent lost updates where relevant, for example with ETag/If-Match preconditions. Choose cache directives and validators deliberately; prevent shared caches from leaking personalized data. Document rate limits and retry guidance (`429`, and `Retry-After` when appropriate).
+
+### Compatibility and evolution
+
+- Classify changes as behavior-preserving, additive, or potentially breaking. Check paths, types, required fields, nullability, validation, defaults, status/headers, errors, ordering, pagination, and SDK expectations.
+- Additions are not automatically safe: strict deserializers and exhaustive enum handling can break. Determine whether consumers deploy together; treat unknown external consumers as a compatibility constraint.
+- Prefer compatible extension over silently replacing a published contract. Use an established versioning strategy only when needed; do not impose a versioning mechanism on every API.
+- For an authorized breaking change, define affected consumers, coexistence, migration, verification, rollback, and removal criteria. Do not invent deprecation dates or assume local caller updates prove external adoption.
+
+## Small contract example
+
+Illustrative only; adapt naming, pagination, and representation to the project.
+
+```http
+GET /orders?status=pending&limit=20
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{"data":[{"id":"ord_123","status":"pending"}],"nextCursor":null}
+```
+
+Define allowed `status` values, `limit` bounds/default, ordering, and the next-page `cursor` parameter. Keep the same shape with `data: []` when empty; `nextCursor: null` means traversal is complete.
+
+## Common pitfalls
+
+- Cosmetic renames that break clients without improving behavior.
+- Documenting retry safety without implementing deduplication or concurrency control.
+- Assuming authentication alone provides resource authorization.
+- Replacing a bare array with pagination metadata without assessing existing consumers.
+- Treating a style preference or guide example as an HTTP requirement.
+
+## Verify and deliver
+
+- [ ] Inputs, success responses, errors, statuses, and headers form an explicit contract.
+- [ ] Applicable authorization, collection bounds, retry, concurrency, and compatibility cases are covered.
+- [ ] Implementation, contract source, examples, and docs agree; use existing tooling for focused tests and schema checks.
+- [ ] Behavior was checked beyond schema lint, or unavailable checks are clearly disclosed.
+
+Return the contract or changes, consequential tradeoffs, compatibility impact, and checks actually performed. Mark assumptions and unverified risks. For review-only requests, report evidenced findings and coverage limits without editing implementation.
+
+## Further reference
+
+[Speakeasy's REST API Design Guide](https://www.speakeasy.com/api-design) provides deeper explanations and alternatives. This skill is self-contained; consult relevant chapters only when useful, not as a prerequisite. For protocol questions, use primary standards such as [HTTP semantics (RFC 9110)](https://www.rfc-editor.org/rfc/rfc9110.html), [PATCH (RFC 5789)](https://www.rfc-editor.org/rfc/rfc5789.html), and [Problem Details (RFC 9457)](https://www.rfc-editor.org/rfc/rfc9457.html).

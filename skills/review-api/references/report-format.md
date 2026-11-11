@@ -8,7 +8,7 @@ Order by consumer impact. For each actionable finding include:
 
 - **Finding and impact:** what happens to a consumer, and when.
 - **Evidence:** operation/schema pointer or repository `file:line`, with observed versus inferred behavior distinguished.
-- **Basis:** protocol requirement, contract mismatch, or Speakeasy recommendation; link the relevant guide page and name the section. Cite the standard if it resolves an upstream ambiguity.
+- **Basis:** protocol requirement, contract mismatch, or design recommendation; name the relevant shared guidance section and link external references if consulted. Cite the standard when resolving a protocol ambiguity.
 - **Correction:** smallest useful change and whether it is behavior-preserving, additive, or potentially breaking.
 - **Verification:** check performed and result, or the remaining check needed.
 

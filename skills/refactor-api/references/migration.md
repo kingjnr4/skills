@@ -1,6 +1,6 @@
 # Evolving an existing API
 
-Use the shared `api-design` skill's versioning chapter alongside this workflow. The compatibility reasoning here is an editorial application of the guide, not verbatim Speakeasy guidance.
+Use the shared `api-design` skill's compatibility and evolution guidance alongside this workflow. These notes expand that guidance into a migration checklist.
 
 ## Capture the baseline
 
